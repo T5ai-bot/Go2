@@ -37,15 +37,16 @@ namespace champ
 {
     class BodyController
     {
-        QuadrupedBase *base_;
+        QuadrupedBase *base_;   // pointer to robot base   // 中文：机器人整体模型指针
 
         public:
             BodyController(QuadrupedBase &quadruped_base):
-                base_(&quadruped_base)
+                base_(&quadruped_base)  // store the pointer  // 中文：保存指针以便后用
             {
             }
 
-            void poseCommand(geometry::Transformation (&foot_positions)[4], 
+            // propagate pose command to all 4 legs             // 中文：把机体姿态指令分发到 4 条腿
+            void poseCommand(geometry::Transformation (&foot_positions)[4],
                              const champ::Pose &req_pose)
             {
                 for(int i = 0; i < 4; i++)
@@ -53,20 +54,23 @@ namespace champ
                     poseCommand(foot_positions[i], *base_->legs[i], req_pose);
                 }
             }
-            
-            static void poseCommand(geometry::Transformation &foot_position, 
-                                    champ::QuadrupedLeg &leg, 
+
+            // convert body pose to single-leg foot pose        // 中文：将机体姿态转换成单腿足端坐标
+            static void poseCommand(geometry::Transformation &foot_position,
+                                    champ::QuadrupedLeg &leg,
                                     const champ::Pose &req_pose)
             {
-                float req_translation_x = -req_pose.position.x;
+                float req_translation_x = -req_pose.position.x;   // negate body X   // 中文：机体前移→脚向后移
 
-                float req_translation_y = -req_pose.position.y;
+                float req_translation_y = -req_pose.position.y;   // negate body Y   // 中文：机体左移→脚向右移
 
+                // desired Z; negative because feet sit below body     // 中文：机体上下补偿，脚在 Z 负方向
                 float req_translation_z = -(leg.zero_stance().Z() + req_pose.position.z);
-                float max_translation_z = -leg.zero_stance().Z() * 0.65;
+                float max_translation_z = -leg.zero_stance().Z() * 0.65; // limit 65 % leg length // 中文：最多下探 65%
 
-                //there shouldn't be any negative translation when
-                //the legs are already fully stretched
+                // there shouldn't be any negative translation when
+                // the legs are already fully stretched
+                // 中文：若腿已完全伸直，不允许再向上抬脚
                 if(req_translation_z < 0.0)
                 {
                     req_translation_z = 0.0;
@@ -76,18 +80,21 @@ namespace champ
                     req_translation_z = max_translation_z;
                 }
 
-                //create a new foot position from position of legs when stretched out
+                // create a new foot position from position of legs when stretched out
+                // 中文：从名义零落脚点开始计算
                 foot_position = leg.zero_stance();
 
-                //move the foot position to desired body` position of the robot
+                // move the foot position to desired body position of the robot
+                // 中文：根据机体平移量移动足端
                 foot_position.Translate(req_translation_x, req_translation_y, req_translation_z);
 
-                //rotate the leg opposite the required orientation of the body
+                // rotate the leg opposite the required orientation of the body
+                // 中文：按机体旋转的反方向旋转足端，实现抵消
                 foot_position.RotateZ(-req_pose.orientation.yaw);
                 foot_position.RotateY(-req_pose.orientation.pitch);
                 foot_position.RotateX(-req_pose.orientation.roll);
-            
-    
+
+                // convert to hip-frame coordinates for IK         // 中文：转换到髋坐标系供逆运动学使用
                 champ::Kinematics::transformToHip(foot_position, leg);
             }
     };

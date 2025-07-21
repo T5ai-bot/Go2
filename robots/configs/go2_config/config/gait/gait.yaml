@@ -10,5 +10,12 @@
       com_x_translation: 0.0
       swing_height : 0.04
       stance_depth : 0.01
-      stance_duration : 0.25
+      stance_duration : 0.375   # Td (beta=0.75)
       nominal_height : 0.225
+      cycle_time:        0.5      # T
+      phase_offsets:              # Walk 相位
+        LF: 0.00
+        RF: 0.50
+        LH: 0.75
+        RH: 0.25
+
