@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-919912e3ab5858c4edc1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "champ_bringup",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_champ_bringup_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_champ_bringup_egg-5c8b0f56ab873d434359.json",
+					"name" : "ament_cmake_python_build_champ_bringup_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_champ_bringup::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_champ_bringup-e4134d4a25cbf5e88187.json",
+					"name" : "ament_cmake_python_copy_champ_bringup",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "champ_bringup_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-champ_bringup_uninstall-ff88612d1d21c43ba200.json",
+					"name" : "champ_bringup_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-56c3780538a1c7035d30.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_bringup",
+		"source" : "/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/champ/champ_bringup"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

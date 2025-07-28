@@ -1,0 +1,73 @@
+[0.040s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/champ/champ_description -DCMAKE_INSTALL_PREFIX=/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description
+[0.179s] -- The C compiler identification is GNU 11.4.0
+[0.309s] -- The CXX compiler identification is GNU 11.4.0
+[0.323s] -- Detecting C compiler ABI info
+[0.577s] -- Detecting C compiler ABI info - done
+[0.598s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.598s] -- Detecting C compile features
+[0.598s] -- Detecting C compile features - done
+[0.602s] -- Detecting CXX compiler ABI info
+[0.780s] -- Detecting CXX compiler ABI info - done
+[0.800s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.800s] -- Detecting CXX compile features
+[0.800s] -- Detecting CXX compile features - done
+[0.808s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.228s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.559s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.701s] -- Configuring done
+[1.706s] -- Generating done
+[1.720s] -- Build files have been written to: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description
+[1.751s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/champ/champ_description -DCMAKE_INSTALL_PREFIX=/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description
+[1.752s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --build /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description -- -j8 -l8
+[1.848s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --build /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description -- -j8 -l8
+[1.851s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --install /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description
+[1.879s] -- Install configuration: ""
+[1.879s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/launch
+[1.886s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/launch/description.launch
+[1.887s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/launch/view_urdf.launch
+[1.887s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/launch/description.launch.py
+[1.887s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/rviz
+[1.887s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/rviz/urdf_viewer.rviz
+[1.887s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes
+[1.887s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/arm
+[1.887s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/arm/lower_arm.stl
+[1.888s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/arm/base.stl
+[1.888s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/arm/wrist1.stl
+[1.888s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/arm/wrist2.stl
+[1.889s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/arm/upper_arm.stl
+[1.896s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/base.stl
+[1.899s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/lower_leg.stl
+[1.899s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/asus_camera_simple.dae
+[1.900s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/upper_leg_simple.stl
+[1.900s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/hokuyo_utm_30lx.dae
+[1.900s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/lower_leg_simple.stl
+[1.900s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/hip.stl
+[1.900s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/base_simple.stl
+[1.902s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/meshes/upper_leg.stl
+[1.902s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf
+[1.902s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/champ.urdf
+[1.902s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/asus_camera.urdf.xacro
+[1.903s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/leg.urdf.xacro
+[1.904s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/accessories.urdf.xacro
+[1.904s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/hokuyo_utm30lx.urdf.xacro
+[1.904s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/properties.urdf.xacro
+[1.904s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/champ_velodyne.urdf
+[1.904s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/champ.urdf.xacro
+[1.905s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/gen_urdf
+[1.905s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/urdf/champ_arm.urdf
+[1.906s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/ament_index/resource_index/package_run_dependencies/champ_description
+[1.907s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/ament_index/resource_index/parent_prefix_path/champ_description
+[1.907s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/environment/ament_prefix_path.sh
+[1.907s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/environment/ament_prefix_path.dsv
+[1.907s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/environment/path.sh
+[1.907s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/environment/path.dsv
+[1.907s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/local_setup.bash
+[1.907s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/local_setup.sh
+[1.908s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/local_setup.zsh
+[1.909s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/local_setup.dsv
+[1.909s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/package.dsv
+[1.909s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/ament_index/resource_index/packages/champ_description
+[1.911s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/cmake/champ_descriptionConfig.cmake
+[1.911s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/cmake/champ_descriptionConfig-version.cmake
+[1.912s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_description/share/champ_description/package.xml
+[1.948s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --install /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_description

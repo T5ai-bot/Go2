@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "champ_msgs__py",
+		"source" : "/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_msgs/champ_msgs__py"
+	}
+}

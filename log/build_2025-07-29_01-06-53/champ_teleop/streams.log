@@ -1,0 +1,42 @@
+[0.035s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/champ_teleop -DCMAKE_INSTALL_PREFIX=/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop
+[0.165s] -- The C compiler identification is GNU 11.4.0
+[0.284s] -- The CXX compiler identification is GNU 11.4.0
+[0.308s] -- Detecting C compiler ABI info
+[0.506s] -- Detecting C compiler ABI info - done
+[0.525s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.525s] -- Detecting C compile features
+[0.535s] -- Detecting C compile features - done
+[0.539s] -- Detecting CXX compiler ABI info
+[0.729s] -- Detecting CXX compiler ABI info - done
+[0.747s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.749s] -- Detecting CXX compile features
+[0.749s] -- Detecting CXX compile features - done
+[0.761s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.259s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.737s] -- Configuring done
+[1.750s] -- Generating done
+[1.750s] -- Build files have been written to: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop
+[1.760s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/champ_teleop -DCMAKE_INSTALL_PREFIX=/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop
+[1.761s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --build /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop -- -j8 -l8
+[1.863s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --build /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop -- -j8 -l8
+[1.864s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --install /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop
+[1.889s] -- Install configuration: ""
+[1.889s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/launch
+[1.890s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/launch/teleop.launch.py
+[1.892s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/lib/champ_teleop/champ_teleop.py
+[1.892s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/ament_index/resource_index/package_run_dependencies/champ_teleop
+[1.893s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/ament_index/resource_index/parent_prefix_path/champ_teleop
+[1.893s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/environment/ament_prefix_path.sh
+[1.893s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/environment/ament_prefix_path.dsv
+[1.893s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/environment/path.sh
+[1.893s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/environment/path.dsv
+[1.894s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/local_setup.bash
+[1.894s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/local_setup.sh
+[1.894s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/local_setup.zsh
+[1.894s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/local_setup.dsv
+[1.895s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/package.dsv
+[1.895s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/ament_index/resource_index/packages/champ_teleop
+[1.895s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/cmake/champ_teleopConfig.cmake
+[1.895s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/cmake/champ_teleopConfig-version.cmake
+[1.897s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_teleop/share/champ_teleop/package.xml
+[1.949s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --install /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_teleop

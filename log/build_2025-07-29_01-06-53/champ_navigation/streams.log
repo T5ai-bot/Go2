@@ -1,0 +1,46 @@
+[0.036s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/champ/champ_navigation -DCMAKE_INSTALL_PREFIX=/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation
+[0.164s] -- The C compiler identification is GNU 11.4.0
+[0.301s] -- The CXX compiler identification is GNU 11.4.0
+[0.316s] -- Detecting C compiler ABI info
+[0.541s] -- Detecting C compiler ABI info - done
+[0.570s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.570s] -- Detecting C compile features
+[0.571s] -- Detecting C compile features - done
+[0.578s] -- Detecting CXX compiler ABI info
+[0.755s] -- Detecting CXX compiler ABI info - done
+[0.772s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.772s] -- Detecting CXX compile features
+[0.774s] -- Detecting CXX compile features - done
+[0.782s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.205s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.679s] -- Configuring done
+[1.683s] -- Generating done
+[1.691s] -- Build files have been written to: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation
+[1.709s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/champ/champ_navigation -DCMAKE_INSTALL_PREFIX=/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation
+[1.710s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --build /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation -- -j8 -l8
+[1.834s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --build /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation -- -j8 -l8
+[1.836s] Invoking command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --install /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation
+[1.866s] -- Install configuration: ""
+[1.867s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/launch
+[1.867s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/launch/slam.launch.py
+[1.867s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/launch/navigate.launch.py
+[1.868s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/rviz
+[1.868s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/rviz/navigation_minimal.rviz
+[1.868s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/rviz/slam.rviz
+[1.868s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/rviz/navigation.rviz
+[1.878s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/ament_index/resource_index/package_run_dependencies/champ_navigation
+[1.881s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/ament_index/resource_index/parent_prefix_path/champ_navigation
+[1.881s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/environment/ament_prefix_path.sh
+[1.882s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/environment/ament_prefix_path.dsv
+[1.882s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/environment/path.sh
+[1.882s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/environment/path.dsv
+[1.882s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/local_setup.bash
+[1.884s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/local_setup.sh
+[1.884s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/local_setup.zsh
+[1.884s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/local_setup.dsv
+[1.884s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/package.dsv
+[1.884s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/ament_index/resource_index/packages/champ_navigation
+[1.885s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/cmake/champ_navigationConfig.cmake
+[1.885s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/cmake/champ_navigationConfig-version.cmake
+[1.885s] -- Installing: /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/install/champ_navigation/share/champ_navigation/package.xml
+[1.893s] Invoked command in '/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/t5ai/unitree_go2_ws/install/go2_helloworld_py:/home/t5ai/unitree_go2_ws/install/go2_gait_tools:/opt/ros/humble /usr/bin/cmake --install /home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ_navigation
