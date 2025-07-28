@@ -1,9 +1,0 @@
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/uninstall.dir
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/champ_uninstall.dir
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/test.dir
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/edit_cache.dir
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/rebuild_cache.dir
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/list_install_components.dir
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/install.dir
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/install/local.dir
-/home/t5ai/unitree_go2_ws/src/unitree-go2-ros2/build/champ/CMakeFiles/install/strip.dir
