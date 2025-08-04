@@ -1,0 +1,4 @@
+# 忽略整个 log 目录
+/build/
+/install/
+/log/

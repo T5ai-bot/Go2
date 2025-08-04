@@ -7,6 +7,7 @@ install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 
 ament_python_install_package(${PROJECT_NAME})
 install(PROGRAMS
+  champ_bringup/mm_gait_node.py            # ← NEW
   champ_bringup/joint_calibrator_relay.py
   DESTINATION lib/${PROJECT_NAME}
 )

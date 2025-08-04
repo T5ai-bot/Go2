@@ -131,6 +131,14 @@ leg_clocks[3] = elapsed_time_ref - (0.5f * stride_period);   // RH
             bool  has_started;               // 已经开始运动
             float stance_phase_signal[4];    // 支撑相位 0‒1
             float swing_phase_signal[4];     // 摆动相位 0‒1
+            
+    void setPhase(const float stance[4], const float swing[4]){
+        for(int i=0;i<4;++i){
+            stance_phase_signal[i] = stance[i];
+            swing_phase_signal[i]  = swing[i];
+        }
+        has_started = true;  // 避免 run() 复位
+    };
     };
 }
 

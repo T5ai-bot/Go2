@@ -6,6 +6,9 @@
 #include <quadruped_base/quadruped_components.h>
 #include <leg_controller/trajectory_planner.h>
 #include <leg_controller/phase_generator.h>
+// #include <champ/motion_matching/MMOutput.h>        // ← 新增04.08
+#include <champ/motion_matching/MotionMatchingModule.h>  // ← 新增04.08
+
 #include <vector>          // ★为了 std::vector
 
 
@@ -120,13 +123,53 @@ rh.fitTemplate(rear_x,  rear_y);    // 右后
                 float velocity =  sqrtf(pow(req_vel.linear.x, 2) +
                                         pow(req_vel.linear.y + tangential_velocity, 2));
 
-                // 4) Raibert 估算三自由度落点位移
+/* ---------- 4) 步长估算 ---------- */
+// bool use_motion_matching = falsh;     // 开关，可改成参数 test=falsh
+// float step_x, step_y, step_theta;
+
+// if(use_motion_matching){
+//     champ::motion_matching::MMOutput mm =
+//         MotionMatchingModule::getLatestOutput();   // 从共享单例/订阅获取
+
+//     step_x = mm.step_len[0] * 0.5f;                // 半步长
+//     step_y = 0.0f;
+//     float tang_mm = mm.yaw_rate *
+//                     base_->lf.center_to_nominal();
+//     step_theta = raibertHeuristic(
+//                    base_->gait_config.stance_duration, tang_mm);
+// }else{
+// ===== 4) 步长 / 偏航估算 =====
+bool use_motion_matching = false;          // 先编译通过 04.08
+
+/*** ① 先声明变量，让后续都可见 ***/
+float step_x = 0.0f;                       // <- 这三行必须放在 if 前
+float step_y = 0.0f;
+float step_theta = 0.0f;
+
+champ::motion_matching::MMOutput mm;       // 声明一次，外层可见
+
+if (use_motion_matching)
+{
+    mm = champ::motion_matching::MotionMatchingModule::getLatestOutput();
+
+    step_x = mm.step_len[0] * 0.5f;        // 这里只是 **赋值**
+    step_y = 0.0f;
+    float tang_mm = mm.yaw_rate * base_->lf.center_to_nominal();
+    step_theta = raibertHeuristic(base_->gait_config.stance_duration,
+                                  tang_mm);
+}
+else
+{
+                    // 4) Raibert 估算三自由度落点位移 
                 float step_x     = raibertHeuristic(base_->gait_config.stance_duration,
                                                     req_vel.linear.x);
                 float step_y     = raibertHeuristic(base_->gait_config.stance_duration,
                                                     req_vel.linear.y);
                 float step_theta = raibertHeuristic(base_->gait_config.stance_duration,
                                                     tangential_velocity);
+    /* 原 Raibert 三行保持 */
+}                                        
+
 
                 // 5) 将平旋落点位移换算成 等效足端旋转角 θ
                 float theta = sinf((step_theta / 2) / base_->lf.center_to_nominal()) * 2;
@@ -149,7 +192,13 @@ rh.fitTemplate(rear_x,  rear_y);    // 右后
                 phase_generator.run(velocity,              // 机器人线速度
                                     sum_of_steps / 4.0f,   // 平均步长
                                     time);                 // 当前时刻
-
+/* ---------- 7) 相位更新 ---------- */
+if(use_motion_matching){
+    phase_generator.setPhase(mm.stance_phase.data(),
+                             mm.swing_phase .data());
+}else{
+    phase_generator.run(velocity, sum_of_steps/4.0f, time);
+}
                 // 8) TrajectoryPlanner 根据相位生成足端期望
                 for(unsigned int i = 0; i < 4; i++)
                 {
