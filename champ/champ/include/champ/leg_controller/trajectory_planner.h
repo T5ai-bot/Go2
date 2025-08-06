@@ -34,7 +34,8 @@ namespace champ
         // /* 经实时缩放后的控制点（运行时使用） */
         // float control_points_x_[12];
         // float control_points_y_[12];
-        float factorial_[21];          // 0…20!
+        // float factorial_[21];          // 0…20!
+double factorial_[21];    // ★修改为 double
         float ref_control_points_x_[20];
         float ref_control_points_y_[20];
         float control_points_x_[20];
@@ -91,6 +92,13 @@ namespace champ
             TrajectoryPlanner(QuadrupedLeg &leg):
                 leg_(&leg),
                 total_control_points_(20),
+                    factorial_{
+        1.0, 1.0, 2.0, 6.0, 24.0, 120.0, 720.0, 5040.0,
+        40320.0, 362880.0, 3628800.0, 39916800.0, 479001600.0,
+        6227020800.0, 87178291200.0, 1307674368000.0,
+        20922789888000.0, 355687428096000.0, 6402373705728000.0,
+        121645100408832000.0, 2432902008176640000.0
+    },
                 // factorial_{1.0,1.0,2.0,6.0,24.0,120.0,720.0,5040.0,
                 //            40320.0,362880.0,3628800.0,39916800.0,479001600.0},
                 // ref_control_points_x_{-0.15, -0.2805, -0.3,  -0.3,  -0.3,
