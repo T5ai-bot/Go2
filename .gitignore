@@ -3,3 +3,6 @@ log/
 # 忽略整个 install 目录
 install/
 build/
+
+# VSCode apecific
+.vscode/
