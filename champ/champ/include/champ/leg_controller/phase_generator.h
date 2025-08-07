@@ -82,13 +82,18 @@ namespace champ
                  *     \  /
                  *     /  \
                  *   LH    RH
-                 *
+                 * pace
                  * 对角跑：LF/RH 相位同，RF/LH 相位同且滞后 0.5 周期
                  */
+// leg_clocks[0] = elapsed_time_ref - (0.0f * stride_period);   // LF
+// leg_clocks[1] = elapsed_time_ref - (0.5f * stride_period);   // RF
+// leg_clocks[2] = elapsed_time_ref - (0.0f * stride_period);   // LH
+// leg_clocks[3] = elapsed_time_ref - (0.5f * stride_period);   // RH
+// trot
 leg_clocks[0] = elapsed_time_ref - (0.0f * stride_period);   // LF
 leg_clocks[1] = elapsed_time_ref - (0.5f * stride_period);   // RF
-leg_clocks[2] = elapsed_time_ref - (0.0f * stride_period);   // LH
-leg_clocks[3] = elapsed_time_ref - (0.5f * stride_period);   // RH
+leg_clocks[2] = elapsed_time_ref - (0.5f * stride_period);   // LH
+leg_clocks[3] = elapsed_time_ref - (0.0f * stride_period);   // RH
 
                 // ───── 6. Saw-tooth → 归一化相位 (0‒1) ─────
                 for(int i = 0; i < 4; i++)

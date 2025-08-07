@@ -1,0 +1,20 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/t5ai/unitree_go2_ws/install/champ_bringup/local/lib/python3.10/dist-packages",
+        "/home/t5ai/unitree_go2_ws/install/champ_msgs/local/lib/python3.10/dist-packages",
+        "/home/t5ai/unitree_ros2/cyclonedds_ws/install/unitree_hg/local/lib/python3.10/dist-packages",
+        "/home/t5ai/unitree_ros2/cyclonedds_ws/install/unitree_go/local/lib/python3.10/dist-packages",
+        "/home/t5ai/unitree_ros2/cyclonedds_ws/install/unitree_api/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/t5ai/unitree_go2_ws/install/champ_bringup/local/lib/python3.10/dist-packages",
+        "/home/t5ai/unitree_go2_ws/install/champ_msgs/local/lib/python3.10/dist-packages",
+        "/home/t5ai/unitree_ros2/cyclonedds_ws/install/unitree_hg/local/lib/python3.10/dist-packages",
+        "/home/t5ai/unitree_ros2/cyclonedds_ws/install/unitree_go/local/lib/python3.10/dist-packages",
+        "/home/t5ai/unitree_ros2/cyclonedds_ws/install/unitree_api/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
