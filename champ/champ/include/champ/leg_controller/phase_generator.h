@@ -46,13 +46,17 @@ namespace champ
                 // ───── 2. 若速度为 0 → 立即停相位 ─────
                 if(target_velocity == 0.0f)
                 {
-                    elapsed_time_ref = 0;
-                    last_touchdown_  = 0;
+
+                    // elapsed_time_ref = 0;
+                    // last_touchdown_  = 0;
+            // 保持当前时间，而不是清零
+            last_touchdown_ = time;  // ✅ 保持时间连续性
+            has_started = false;     // ✅ 重置启动标志
                     has_swung_       = false;
 
                     for(unsigned int i = 0; i < 4; i++)
                     {
-                        leg_clocks[i]          = 0.0f;
+                        // leg_clocks[i]          = 0.0f;
                         stance_phase_signal[i] = 0.0f;
                         swing_phase_signal[i]  = 0.0f;
                     }
@@ -85,15 +89,15 @@ namespace champ
                  * pace
                  * 对角跑：LF/RH 相位同，RF/LH 相位同且滞后 0.5 周期
                  */
-// leg_clocks[0] = elapsed_time_ref - (0.0f * stride_period);   // LF
-// leg_clocks[1] = elapsed_time_ref - (0.5f * stride_period);   // RF
-// leg_clocks[2] = elapsed_time_ref - (0.0f * stride_period);   // LH
-// leg_clocks[3] = elapsed_time_ref - (0.5f * stride_period);   // RH
-// trot
 leg_clocks[0] = elapsed_time_ref - (0.0f * stride_period);   // LF
 leg_clocks[1] = elapsed_time_ref - (0.5f * stride_period);   // RF
-leg_clocks[2] = elapsed_time_ref - (0.5f * stride_period);   // LH
-leg_clocks[3] = elapsed_time_ref - (0.0f * stride_period);   // RH
+leg_clocks[2] = elapsed_time_ref - (0.0f * stride_period);   // LH
+leg_clocks[3] = elapsed_time_ref - (0.5f * stride_period);   // RH
+// trot
+// leg_clocks[0] = elapsed_time_ref - (0.0f * stride_period);   // LF
+// leg_clocks[1] = elapsed_time_ref - (0.5f * stride_period);   // RF
+// leg_clocks[2] = elapsed_time_ref - (0.5f * stride_period);   // LH
+// leg_clocks[3] = elapsed_time_ref - (0.0f * stride_period);   // RH
 
                 // ───── 6. Saw-tooth → 归一化相位 (0‒1) ─────
                 for(int i = 0; i < 4; i++)
@@ -120,11 +124,18 @@ leg_clocks[3] = elapsed_time_ref - (0.0f * stride_period);   // RH
                 // ───── 7. 首拍保护：先抬对角腿防止蹲死 ─────
                 if(!has_swung_ && stance_phase_signal[0] < 0.5f)
                 {
-                    // 进入运动第一半拍：强制 LF/RH 置 0（支撑），RF/LH 摆动
-                    stance_phase_signal[0] = 0.0f;
-                    stance_phase_signal[3] = 0.0f;
-                    swing_phase_signal[1]  = 0.0f;
-                    swing_phase_signal[2]  = 0.0f;
+                    // // 进入运动第一半拍：强制 LF/RH 置 0（支撑），RF/LH 摆动
+                    // stance_phase_signal[0] = 0.0f;
+                    // stance_phase_signal[3] = 0.0f;
+                    // swing_phase_signal[1]  = 0.0f;
+                    // swing_phase_signal[2]  = 0.0f;
+    // LF/RH 强制支撑
+    stance_phase_signal[0] = 0.6f; swing_phase_signal[0] = 0.0f;
+    stance_phase_signal[3] = 0.6f; swing_phase_signal[3] = 0.0f;
+    // RF/LH 强制摆动
+    stance_phase_signal[1] = 0.0f; swing_phase_signal[1]  = 0.6f;
+    stance_phase_signal[2] = 0.0f; swing_phase_signal[2]  = 0.6f;
+                    
                 }
                 else
                 {

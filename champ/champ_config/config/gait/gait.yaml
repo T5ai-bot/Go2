@@ -4,12 +4,12 @@
       knee_orientation : ">>"
       pantograph_leg : false
       odom_scaler: 0.9
-      max_linear_velocity_x : 0.5
+      max_linear_velocity_x : 0.25 # 0.5 降低最大速度
       max_linear_velocity_y : 0.25
-      max_angular_velocity_z : 1.0
+      max_angular_velocity_z : 0.5 # 1.0
       com_x_translation: 0.0
-      swing_height : 0.04
-      stance_depth : 0.00
-      stance_duration : 0.1 #0.25
-      nominal_height : 0.20
+      swing_height : 0.08 #0.04 pace 同侧摆动，提升抬脚高度减少拖脚
+      stance_depth : 0.01 #0.00 给一点儿跋涉深度，落地更“咬地”
+      stance_duration : 0.35 #0.25 0.35 ~ 0.45（β≈0.58–0.64，显著更稳
+      nominal_height : 0.22 #0.2 视你 IK 零位而定，过低会更跋扈、过高更不稳 0.22 ~ 0.23
 

@@ -101,9 +101,18 @@ namespace champ               // CHAMP 命名空间 | namespace
                 z = temp_foot_pos.Z();
 
                 // ---- 可达性检测 | reachability check
-                float target_to_foot = sqrtf(pow(x, 2) + pow(z,2));
-                if(target_to_foot >= (abs(l1) + abs(l2)))
-                    return;                             // 超界直接退出 | unreachable
+                // float target_to_foot = sqrtf(pow(x, 2) + pow(z,2));
+                // if(target_to_foot >= (abs(l1) + abs(l2)))
+                //     return;                             // 超界直接退出 | unreachable
+float target_to_foot = sqrtf(x*x + z*z);
+float limit = fabsf(l1) + fabsf(l2) - 1e-4f;  // 留微小裕度
+if (target_to_foot > limit) {
+    float s = limit / target_to_foot;
+    x *= s; z *= s;                // 把目标缩回可达圆盘边界
+    temp_foot_pos.X() = x; 
+    temp_foot_pos.Z() = z;
+}
+// 不再 return，继续解 IK
 
                 // ---- 二连杆解析 IK | 2-link planar IK
                 // 来源链接见注释 | source in code

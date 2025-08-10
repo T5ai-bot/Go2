@@ -5,7 +5,8 @@
 #include <quadruped_base/quadruped_leg.h>
 #include <vector>          // ★新增
 #include <cassert>
-
+#include <algorithm>  // for std::minmax_element
+#include <cmath>      // for fabsf
 namespace champ
 {
     class TrajectoryPlanner
@@ -14,6 +15,11 @@ namespace champ
         QuadrupedLeg *leg_;                    // 指向本腿几何 & Gait 配置
         unsigned int total_control_points_;    // Bézier 控制点个数
         geometry::Transformation prev_foot_position_; // 上一帧足端位置（防止静态漂移）
+// 模板高度范围（用于把模板y归一化到[0,1]）        
+        float ref_y_min_ = 0.0f;
+        float ref_y_max_ = 1.0f;        
+float ref_y_ground_ = 0.0f;   // 端点平均
+float ref_y_peak_   = 1.0f;   // 中段极值
 
         // ★ 修正：使用double防止大数溢出
         double factorial_[21];                 // 0! 到 20! 的预计算阶乘表
@@ -33,18 +39,24 @@ namespace champ
          */
         void updateControlPointsHeight(float swing_height)
         {
-            float new_height_ratio = swing_height / 0.15f;          // 0.15 m 是参考高度
-            if(height_ratio_ != new_height_ratio)                   // 避免重复运算
-            {
-                height_ratio_ = new_height_ratio;
-                for(unsigned int i = 0; i < total_control_points_; i++)
-                {
-                    // Y 方向始终朝 -Z，所以是负数
-                    control_points_y_[i] = -((ref_control_points_y_[i] * height_ratio_)
-                                             + (0.5f * height_ratio_));
-                }
+            // 峰-地面振幅
+            float denom = ref_y_peak_ - ref_y_ground_;
+            float inv   = (std::fabs(denom) > 1e-6f) ? (1.0f / denom) : 0.0f;
+            for (unsigned int i = 0; i < total_control_points_; ++i) {
+                float y = ref_control_points_y_[i];
+                // 归一化：ground→0, peak→1；自动适配正/负峰
+                float y_norm = (inv != 0.0f) ? (y - ref_y_ground_) * inv : 0.0f;
+                // 裁剪到 [0,1]，保持形状不变（只裁边界）
+
+                // 不要 clamp 到 [0,1] pace 同侧同相，落脚时的“顺滑度”比 trot 更敏感，别把端点附近的斜率抹掉。
+                // if (y_norm < 0.0f) y_norm = 0.0f;
+                // if (y_norm > 1.0f) y_norm = 1.0f;
+
+                // 仍沿用你的管线：Y 表示竖直、向下为负；最终会加到 Z
+                control_points_y_[i] = -(y_norm * swing_height);
             }
         }
+        
 
         /* ────────── 内部函数：步长缩放 ──────────
          * 把参考曲线 X 轴按 step_length 线性拉伸
@@ -136,7 +148,7 @@ namespace champ
              * s_stance > s_swing ⇒ 正处于支撑
              * 使用倒 U 曲线扫地，保证接地顺滑
              */
-            if(stance_phase_signal > swing_phase_signal)
+            if(stance_phase_signal >= swing_phase_signal) //把“=”并入支撑：
             {
                 leg_->gait_phase(1);   // 支撑
                 x = (step_length / 2) * (1 - (2 * stance_phase_signal));
@@ -149,13 +161,27 @@ namespace champ
             else if(stance_phase_signal < swing_phase_signal)
             {
                 leg_->gait_phase(0);   // 摆动
-                for(unsigned int i = 0; i < total_control_points_; i++)
-                {
-                    // 组合数 C(n,i) = n! / (i!(n-i)!)
-                    double coeff = factorial_[n] / (factorial_[i] * factorial_[n - i]);
-                    x += coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_x_[i];
-                    y -= coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_y_[i];
-                }
+                // for(unsigned int i = 0; i < total_control_points_; i++)
+                // {
+                //     // 组合数 C(n,i) = n! / (i!(n-i)!)
+                //     double coeff = factorial_[n] / (factorial_[i] * factorial_[n - i]);
+                //     x += coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_x_[i];
+                //     y -= coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_y_[i];
+                // }
+auto bezier_decasteljau = [&](float s, const float* px, const float* py, unsigned n, float& bx, float& by){
+    double X[21], Y[21]; // n<=20 足够
+    for (unsigned i = 0; i <= n; ++i) { X[i] = px[i]; Y[i] = py[i]; }
+    for (unsigned r = 1; r <= n; ++r)
+        for (unsigned i = 0; i <= n - r; ++i) {
+            X[i] = (1.0 - s) * X[i] + s * X[i + 1];
+            Y[i] = (1.0 - s) * Y[i] + s * Y[i + 1];
+        }
+    bx += (float)X[0];
+    by -= (float)Y[0]; // 你原本的符号约定保留
+};
+// 摆动段：
+bezier_decasteljau(swing_phase_signal, control_points_x_, control_points_y_, n, x, y);
+
             }
 
             /* ───── C. 投影到实际腿系 ───── */
@@ -196,6 +222,35 @@ namespace champ
                 control_points_x_[i] = ref_control_points_x_[i];
                 control_points_y_[i] = ref_control_points_y_[i];
             }
+            // === 标定地面与峰值 ===
+            if (total_control_points_ > 0) {
+                // 1) 地面：端点平均（可避免中段异常点影响）
+                float y0  = ref_control_points_y_[0];
+                float yN  = ref_control_points_y_[total_control_points_-1];
+                ref_y_ground_ = 0.5f * (y0 + yN);
+
+                // 2) 峰值：在中段 [20%, 80%] 搜索极值
+                unsigned i_beg = (unsigned)std::floor(0.20f * (total_control_points_-1));
+                unsigned i_end = (unsigned)std::ceil (0.80f * (total_control_points_-1));
+                if (i_end <= i_beg) { i_beg = 0; i_end = total_control_points_-1; }
+
+                float y_min =  1e9f, y_max = -1e9f;
+                for (unsigned i = i_beg; i <= i_end; ++i) {
+                    float y = ref_control_points_y_[i];
+                    if (y < y_min) y_min = y;
+                    if (y > y_max) y_max = y;
+                }
+                // 模板可能向下为负（y_min 更“低”）或向上为正（y_max 更“高”）
+                // 谁远离 ground 就取谁做峰值
+                float d_min = std::fabs(y_min - ref_y_ground_);
+                float d_max = std::fabs(y_max - ref_y_ground_);
+                ref_y_peak_ = (d_min >= d_max) ? y_min : y_max;
+            }       
+// 在 fitTemplate() 后强制单调 
+for (size_t i = 1; i < N; ++i)
+    if (ref_control_points_x_[i] <= ref_control_points_x_[i-1])
+        ref_control_points_x_[i] = ref_control_points_x_[i-1] + 1e-4f;
+            
         }
     };
 }
