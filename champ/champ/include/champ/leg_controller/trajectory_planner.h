@@ -31,20 +31,28 @@ namespace champ
         /* ────────── 内部函数：高度缩放 ──────────
          * 根据 gait_config->swing_height 缩放 Y 坐标
          */
-        void updateControlPointsHeight(float swing_height)
-        {
-            float new_height_ratio = swing_height / 0.15f;          // 0.15 m 是参考高度
-            if(height_ratio_ != new_height_ratio)                   // 避免重复运算
-            {
-                height_ratio_ = new_height_ratio;
-                for(unsigned int i = 0; i < total_control_points_; i++)
-                {
-                    // Y 方向始终朝 -Z，所以是负数
-                    control_points_y_[i] = -((ref_control_points_y_[i] * height_ratio_)
-                                             + (0.5f * height_ratio_));
-                }
-            }
-        }
+// 高度按“当前模板峰值”自适应
+void updateControlPointsHeight(float swing_height)
+{
+    // 1) 取当前参考轨迹的“最高抬脚”值（正值最大）
+    float ref_peak = 0.0f;
+    for (unsigned int i = 0; i < total_control_points_; ++i)
+        ref_peak = std::max(ref_peak, ref_control_points_y_[i]);
+
+    // 2) 目标峰值：若未指定（或给 0），就保持模板原峰值；否则对齐到 swing_height
+    float target_peak = (swing_height > 1e-6f) ? swing_height : ref_peak;
+
+    // 3) 计算缩放比；保证分母非零
+    float new_height_ratio = target_peak / std::max(1e-6f, ref_peak);
+
+    if (fabsf(height_ratio_ - new_height_ratio) < 1e-6f) return;
+    height_ratio_ = new_height_ratio;
+
+    // 4) 纯比例缩放（正号=抬脚；保留你的曲线形状）
+    for (unsigned int i = 0; i < total_control_points_; ++i)
+        control_points_y_[i] = ref_control_points_y_[i] * height_ratio_;
+}
+
 
         /* ────────── 内部函数：步长缩放 ──────────
          * 把参考曲线 X 轴按 step_length 线性拉伸
@@ -140,8 +148,11 @@ namespace champ
             {
                 leg_->gait_phase(1);   // 支撑
                 x = (step_length / 2) * (1 - (2 * stance_phase_signal));
-                y = -leg_->gait_config->stance_depth
-                    * cosf((M_PI * x) / step_length);
+                // y = -leg_->gait_config->stance_depth
+                //     * cosf((M_PI * x) / step_length);
+// 在支撑期加个步长下限，避免小步长时 cos(πx/L) 数值炸裂（这也会“吃掉”视觉上的抬脚对比）         
+float L = std::max(step_length, 1e-3f);
+y = -leg_->gait_config->stance_depth * cosf((M_PI * x) / L);
             }
             /* ───── B. 摆动期 ─────
              * 使用 Bézier 曲线抬脚 → 前移 → 落脚
@@ -151,10 +162,14 @@ namespace champ
                 leg_->gait_phase(0);   // 摆动
                 for(unsigned int i = 0; i < total_control_points_; i++)
                 {
-                    // 组合数 C(n,i) = n! / (i!(n-i)!)
-                    double coeff = factorial_[n] / (factorial_[i] * factorial_[n - i]);
-                    x += coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_x_[i];
-                    y -= coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_y_[i];
+                    // // 组合数 C(n,i) = n! / (i!(n-i)!)
+                    // double coeff = factorial_[n] / (factorial_[i] * factorial_[n - i]);
+                    // x += coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_x_[i];
+                    // y -= coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_y_[i];
+        double coeff = factorial_[n] / (factorial_[i] * factorial_[n - i]);
+        x += coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_x_[i];
+        // 改为加号，因为control_points_y_已经是正值
+        y += coeff * pow(swing_phase_signal, i) * pow((1 - swing_phase_signal), (n - i)) * control_points_y_[i];
                 }
             }
 

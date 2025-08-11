@@ -8,8 +8,7 @@
       max_linear_velocity_y : 0.25
       max_angular_velocity_z : 1.0
       com_x_translation: 0.0
-      swing_height : 0.04
-      stance_depth : 0.00
-      stance_duration : 0.1 #0.25
-      nominal_height : 0.20
-
+      swing_height : 0.08 #0.04 ↑先设大一点，确认能离地
+      stance_depth : 0.02  # 0.00 增加支撑深度，提供更好的地面接触
+      stance_duration : 0.25  #0.25
+      nominal_height : 0.3 #0.2
